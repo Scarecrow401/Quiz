@@ -1,0 +1,24 @@
+<ng-container *ngIf="data$ | async as data">
+    <ng-container *ngIf="!data.isLoading else loadingTemplate">
+        <div class="quiz-items">
+            <div class="quiz-items__container">
+                <ul class="quiz-items__list">
+                    <ng-container *ngFor="let quizItem of data.quizItems">
+                        <li
+                            class="quiz-items__item"
+                            (click)="navigateToQuiz(quizItem.id)"
+                        >
+                            <div class="quiz-item">
+                                <div class="quiz-item__container">
+                                    <h3 class="quiz-item__title">{{quizItem.name}}</h3>
+                                    <p class="quiz-item__text">{{quizItem.info}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #loadingTemplate> Loading... </ng-template>
+</ng-container>

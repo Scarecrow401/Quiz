@@ -7,9 +7,7 @@ import { environment } from 'src/environments/environment';
 import { AuthResponseInterface } from '../types/auth-response.interface';
 import { RegisterPayloadInterface } from '../types/register-payload.interface';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
     public constructor(private readonly http: HttpClient) {}
 

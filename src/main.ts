@@ -1,7 +1,9 @@
 import * as authEffects from './app/auth/store/effects';
+import * as homeEffects from './app/home/store/effects';
 
 import { provideState, provideStore } from '@ngrx/store';
 import { authFeatureKey, authReducer } from './app/auth/store/reducers';
+import { quizItemsFeatureKey, quizItemsReducer } from './app/home/store/reducers';
 
 import { provideHttpClient } from '@angular/common/http';
 import { isDevMode } from '@angular/core';
@@ -18,7 +20,8 @@ bootstrapApplication(AppComponent, {
         provideRouter(appRoutes),
         provideStore(),
         provideState(authFeatureKey, authReducer),
-        provideEffects(authEffects),
+        provideState(quizItemsFeatureKey, quizItemsReducer),
+        provideEffects(authEffects, homeEffects),
         provideStoreDevtools({
             maxAge: 25,
             logOnly: !isDevMode(),
